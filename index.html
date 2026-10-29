@@ -24,7 +24,7 @@
     .hero{display:grid;grid-template-columns:minmax(0,min(835px,52vw)) minmax(0,1fr);grid-template-rows:1fr;gap:48px;align-items:start;justify-items:stretch;min-height:calc(100svh - 72px);padding:84px max(5vw,calc((100vw - 1724px)/2)) 88px;text-align:left}.hero-copy{position:relative;top:auto;left:auto;z-index:2;display:flex;grid-column:2;grid-row:1;align-items:center;justify-content:flex-start;align-self:start;width:auto;height:min(512px,31.9vw);margin-top:0;transform:none;text-align:left}.hero-copy h1{max-width:590px;font-size:clamp(40px,3.35vw,64px);line-height:1.32;white-space:normal;letter-spacing:-.065em}.hero-copy h1 .hero-line-break{display:block}.hero-media{position:relative;z-index:1;grid-column:1;grid-row:1;align-self:start;justify-self:start;width:100%;max-width:850px;margin:0;padding-bottom:44px}.hero-gallery{width:100%;height:auto;aspect-ratio:1.63}.hero-gallery img{padding:0;object-fit:contain}.hero-gallery-pagination{justify-content:center;margin-top:46px}@media(max-width:960px){.hero{display:flex;flex-direction:column;justify-content:flex-start;gap:34px;align-items:stretch;min-height:calc(100svh - 62px);padding:54px 20px 34px}.hero-copy{order:1;display:block;align-self:stretch;height:auto;margin:0;text-align:center}.hero-copy h1{max-width:none;font-size:clamp(28px,7vw,48px);line-height:1.2}.hero-copy h1 .hero-line-break{display:inline}.hero-media{order:2;align-self:center;width:min(100%,720px);padding-bottom:24px}.hero-gallery-pagination{margin-top:12px}}
     .hero-gallery{opacity:1}
 
-    /* Centered introduction followed by the project heading and gallery. */
+    /* Centered introduction with project cards immediately below. */
     .hero {
       display: grid;
       grid-template-columns: 1fr;
@@ -49,53 +49,37 @@
       line-height: 1.32;
     }
     #projects {
-      max-width: 1600px;
+      width: calc(100% - 80px);
+      max-width: 1264px;
       margin: 0 auto;
-      padding: 26px 0 100px;
+      padding: 36px 0 100px;
     }
-    #projects .projects-intro {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 64px;
-      align-items: center;
-      margin-bottom: 88px;
+    .project-section-title {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
     }
-    .projects-intro > div:first-child {text-align: center;}
-    #projects .projects-intro h2 {font-size: clamp(34px, 3.35vw, 64px);}
-    .projects-intro .hero-media {
-      grid-column: auto;
-      grid-row: auto;
-      align-self: center;
-      max-width: none;
-      padding-bottom: 0;
-    }
-    .projects-intro .hero-gallery {aspect-ratio: 16 / 9;}
-    .projects-intro .hero-gallery-pagination {margin-top: 24px;}
-    .projects-intro .hero-page {background: rgba(95,144,240,.32);}
-    .projects-intro .hero-page[aria-current="true"] {background: var(--mint);}
-    .projects-intro .hero-page:hover {background: rgba(95,144,240,.65);}
-    #projects .project-viewport {position: relative;max-width: 1200px;margin: 0 auto;}
+    #projects .project-viewport {position: relative;max-width: 1200px;margin: 0 64px 0 0;}
     #projects .project-pagination {top: 50%;right: -36px;transform: translateY(-50%);}
-    @media (max-width: 1680px) {
-      #projects {margin-right: 40px;margin-left: 40px;}
-    }
     @media (max-width: 960px) {
       .hero {min-height: 280px;padding: 60px 20px;}
       .hero-copy {display: block;align-self: center;}
       .hero-copy h1 {font-size: clamp(28px, 5vw, 48px);}
-      #projects {margin-right: 24px;margin-left: 24px;padding-top: 32px;}
-      #projects .projects-intro {gap: 28px;margin-bottom: 64px;}
-      #projects .projects-intro h2 {font-size: 34px;}
+      #projects {width: calc(100% - 48px);padding-top: 32px;}
+      #projects .project-viewport {margin-right: 24px;}
       #projects .project-pagination {right: -18px;}
     }
     @media (max-width: 760px) {
       .hero {min-height: 250px;padding: 48px 20px;}
       .hero-copy h1 {font-size: clamp(26px, 6.8vw, 40px);}
-      #projects {margin-right: 20px;margin-left: 20px;padding-top: 40px;padding-bottom: 72px;}
-      #projects .projects-intro {grid-template-columns: minmax(0, 1fr);gap: 28px;margin-bottom: 48px;}
-      .projects-intro .hero-media {width: 100%;}
-      .projects-intro .hero-gallery-pagination {margin-top: 18px;}
-      #projects .project-viewport {display: flex;flex-direction: column;}
+      #projects {width: auto;margin-right: 20px;margin-left: 20px;padding-top: 28px;padding-bottom: 72px;}
+      #projects .project-viewport {display: flex;flex-direction: column;margin-right: 0;}
       #projects .project-pagination {position: static;order: 2;transform: none;}
     }
   </style>
@@ -104,7 +88,7 @@
   <header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">L</span><span>LEE KIHYEON</span></a><nav aria-label="페이지 이동"><a class="active" href="index.html">메인 페이지</a><a href="resume.html">이력서</a><a href="cover-letter.html">자기소개서</a></nav></header>
   <main>
     <section class="hero" id="top"><i class="orbit one"></i><i class="orbit two"></i><div class="hero-copy"><h1 class="">프로젝트의 <em>토대</em>,<br>기획자 이기현입니다.</h1></div></section>
-    <section class="section" id="projects"><div class="section-heading projects-intro"><div><p class="eyebrow">SELECTED WORK</p><h2>프로젝트 경험</h2></div><div class="hero-media"><div class="hero-gallery" id="heroGallery" aria-label="프로젝트 게임 이미지 갤러리"><img src="images/highnum.png" alt="하이넘 게임 플레이 화면"><img src="images/minestock.png" alt="마인스톡 게임 화면"></div><div class="hero-gallery-pagination" aria-label="프로젝트 이미지 선택"><button class="hero-page" type="button" data-hero-page="0" aria-label="하이넘 이미지 보기" aria-current="true"></button><button class="hero-page" type="button" data-hero-page="1" aria-label="마인스톡 이미지 보기" aria-current="false"></button></div></div></div><div class="project-viewport"><div class="project-pagination" aria-label="프로젝트 선택"><button class="project-page" type="button" data-project-page="0" aria-label="PROJECT 01 보기" aria-current="true"></button><button class="project-page" type="button" data-project-page="1" aria-label="PROJECT 02 보기" aria-current="false"></button><button class="project-page" type="button" data-project-page="2" aria-label="PROJECT 03 보기" aria-current="false"></button></div><div class="project-track" id="projectTrack">
+    <section class="section" id="projects" aria-labelledby="projectSectionTitle"><h2 class="project-section-title" id="projectSectionTitle">프로젝트 경험</h2><div class="project-viewport"><div class="project-pagination" aria-label="프로젝트 선택"><button class="project-page" type="button" data-project-page="0" aria-label="PROJECT 01 보기" aria-current="true"></button><button class="project-page" type="button" data-project-page="1" aria-label="PROJECT 02 보기" aria-current="false"></button><button class="project-page" type="button" data-project-page="2" aria-label="PROJECT 03 보기" aria-current="false"></button></div><div class="project-track" id="projectTrack">
       <article class="project-card is-active" aria-hidden="false"><div class="project-visual has-image"><div class="visual-label">HIGHNUM</div><img class="project-screenshot" src="images/highnum.png" alt="하이넘 게임 플레이 화면"></div><div class="project-info"><p class="project-index">PROJECT 01</p><div class="project-title"><img class="project-icon" src="images/highnum-icon.png" alt="하이넘 아이콘"><h3>하이넘</h3></div><p class="project-summary">5인 프로젝트, Unity 기반 로그라이크 게임</p><dl><div><dt>진행 기간</dt><dd>2026. 07 — 2026. 08 (6주)</dd></div><div><dt>담당 역할</dt><dd>시스템 기획 · 프로그래밍</dd></div><div><dt>결과물</dt><dd><a href="https://panasaga.itch.io/highnum" target="_blank" rel="noopener noreferrer">itch.io 출시 ↗</a><br><a href="https://drive.google.com/file/d/1bH8mo7WPFVuDRl3oOy-CSsLxg3vRgLzZ/view?usp=drive_link" target="_blank" rel="noopener noreferrer">이벤트 및 보상 시스템 기획서 ↗</a><br><a href="https://drive.google.com/file/d/1QoIE6mO0nk5Xbg2mynd-JQXiUhP5mNI3/view?usp=drive_link" target="_blank" rel="noopener noreferrer">데이터 테이블 구조도 ↗</a></dd></div></dl><a class="text-link with-icon" href="https://panasaga.itch.io/highnum" target="_blank" rel="noopener noreferrer"><img class="link-icon" src="images/itch-icon.png" alt="">itch.io에서 플레이하기 ↗</a></div></article>
       <article class="project-card" aria-hidden="true"><div class="project-visual has-image"><div class="visual-label">MINESTOCK</div><img class="project-screenshot" src="images/minestock.png" alt="마인스톡 게임 플레이 화면"></div><div class="project-info"><p class="project-index">PROJECT 02</p><div class="project-title"><img class="project-icon" src="images/minestock-icon.png" alt="마인스톡 아이콘"><h3>마인스톡</h3></div><p class="project-summary">3인 프로젝트, Unity 기반 클리커 게임</p><dl><div><dt>진행 기간</dt><dd>2026. 06 — 2026. 07 (3주)</dd></div><div><dt>담당 역할</dt><dd>이미지 리소스 · 사운드 리소스</dd></div><div><dt>결과물</dt><dd><a href="https://docs.google.com/spreadsheets/d/14z6vJ1G5oFnON3kpvcNvYBlzzcKoESQh-5h1Ldtansw/edit?usp=drive_link" target="_blank" rel="noopener noreferrer">리소스 명세서 ↗</a><br><a href="https://drive.google.com/drive/folders/1u8IeS9hOO1J9t3b3Bjmz3twvjLvbykMA?usp=drive_link" target="_blank" rel="noopener noreferrer">리소스 모음 폴더 ↗</a></dd></div></dl></div></article>
       <article class="project-card" aria-hidden="true"><div class="project-visual"><div class="visual-label">PROJECT IMAGE · 03</div><div class="screen sand"><div class="screen-top"><b>WAYFARER</b><span>PROTOTYPE</span></div><div class="screen-body"><div class="map"><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i></div><div class="screen-panel"><span>OBJECTIVE</span><b>준비 → 여정 → 귀환</b><small>제한된 자원 속에서 나만의 경로를 설계합니다.</small><div class="progress"><i style="width:45%"></i></div></div></div></div></div><div class="project-info"><p class="project-index">PROJECT 03</p><h3>세 번째 프로젝트를 입력해주세요</h3><p class="project-summary">프로젝트의 핵심 재미와 본인이 기여한 결과를 간결하게 작성하세요.</p><dl><div><dt>진행 기간</dt><dd>2023. 04 — 2023. 08</dd></div><div><dt>담당 역할</dt><dd>밸런스 기획 · 데이터 설계</dd></div><div><dt>결과물</dt><dd>밸런스 테이블, 경제 시스템 문서</dd></div></dl></div></article>
@@ -137,16 +121,6 @@
       window.setTimeout(()=>{projectWheelLocked=false},420);
     },{passive:false});
     showProject(0);
-    const heroGallery=document.getElementById('heroGallery');
-    const heroPages=[...document.querySelectorAll('[data-hero-page]')];
-    const heroImageCount=heroGallery.querySelectorAll('img').length;
-    const heroIndex=()=>Math.round(heroGallery.scrollLeft/heroGallery.clientWidth);
-    const updateHeroPages=()=>heroPages.forEach((page,index)=>page.setAttribute('aria-current',String(index===heroIndex())));
-    const goToHero=(index)=>heroGallery.scrollTo({left:(index+heroImageCount)%heroImageCount*heroGallery.clientWidth,behavior:'smooth'});
-    heroPages.forEach(page=>page.addEventListener('click',()=>goToHero(Number(page.dataset.heroPage))));
-    heroGallery.addEventListener('scroll',updateHeroPages,{passive:true});
-    updateHeroPages();
-    setInterval(()=>goToHero(heroIndex()+1),10000);
   </script>
   <script src="editor.js"></script>
 
