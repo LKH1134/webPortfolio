@@ -82,6 +82,34 @@
       #projects .project-viewport {display: flex;flex-direction: column;margin-right: 0;}
       #projects .project-pagination {position: static;order: 2;transform: none;}
     }
+
+    .steam-caption {margin: -24px 0 20px;color: #596171;font-size: 14px;}
+    .steam-playtime {display: flex;flex-direction: column;align-items: stretch;gap: 16px;}
+    .steam-games {
+      margin: 0;padding: 0;list-style: none;
+      border: 1px solid #e3e9f3;border-radius: 14px;background: #f8faff;
+    }
+    .steam-games li {
+      display: grid;grid-template-columns: 3ch minmax(0,1fr) auto;
+      align-items: center;gap: 16px;padding: 16px 20px;
+    }
+    .steam-games li + li {border-top: 1px solid #e3e9f3;}
+    .steam-games strong {overflow-wrap: anywhere;}
+    .steam-rank {color: #45638e;font-variant-numeric: tabular-nums;}
+    .steam-duration {color: #354869;font-size: 14px;white-space: nowrap;font-variant-numeric: tabular-nums;}
+    .steam-toggle[aria-expanded="false"] + .steam-games li:nth-child(n+4) {display: none;}
+    .steam-toggle[aria-expanded="true"] + .steam-games {
+      max-height: min(26rem, 58vh);overflow-y: auto;scrollbar-gutter: stable;
+    }
+    .steam-toggle {
+      order: 1;align-self: center;padding: 10px 18px;border: 1px solid #cbd9ee;
+      border-radius: 8px;background: #fff;color: #17233f;font: inherit;cursor: pointer;
+    }
+    .steam-toggle:hover {background: #eef4ff;}
+    @media (max-width: 760px) {
+      .steam-caption {margin-top: -14px;}
+      .steam-games li {gap: 10px;padding: 14px 12px;}
+    }
   </style>
 </head>
 <body class="">
@@ -94,7 +122,205 @@
       <article class="project-card" aria-hidden="true"><div class="project-visual"><div class="visual-label">PROJECT IMAGE · 03</div><div class="screen sand"><div class="screen-top"><b>WAYFARER</b><span>PROTOTYPE</span></div><div class="screen-body"><div class="map"><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i></div><div class="screen-panel"><span>OBJECTIVE</span><b>준비 → 여정 → 귀환</b><small>제한된 자원 속에서 나만의 경로를 설계합니다.</small><div class="progress"><i style="width:45%"></i></div></div></div></div></div><div class="project-info"><p class="project-index">PROJECT 03</p><h3>세 번째 프로젝트를 입력해주세요</h3><p class="project-summary">프로젝트의 핵심 재미와 본인이 기여한 결과를 간결하게 작성하세요.</p><dl><div><dt>진행 기간</dt><dd>2023. 04 — 2023. 08</dd></div><div><dt>담당 역할</dt><dd>밸런스 기획 · 데이터 설계</dd></div><div><dt>결과물</dt><dd>밸런스 테이블, 경제 시스템 문서</dd></div></dl></div></article>
     </div></div></section>
     <section class="section" id="skills"><div class="section-heading"><div><p class="eyebrow">CAPABILITIES</p><h2>보유 기술</h2></div></div><div class="skill-grid"><article class="skill-card"><span class="skill-number">01</span><div class="skill-icon"><img src="images/unity.png?v=2" alt="Unity"></div><h3>Unity</h3><p>프로젝트 경험을 통해 Unity의 하이라키 구조 및 인스펙터 조작을 익혔습니다.</p></article><article class="skill-card"><span class="skill-number">02</span><div class="skill-icon"><img src="images/communication.png?v=1" alt="소통"></div><h3>소통</h3><p>프로그래밍 경험이 있어 개발자와 시스템으로 대화하는 것이 가능합니다.</p></article><article class="skill-card"><span class="skill-number">03</span><div class="skill-icon">✦</div><h3 class="">AI 활용</h3><p>프로젝트 경험을 통해 AI로 작업 시간을 단축하는 방법을 익혔습니다.</p></article><article class="skill-card"><span class="skill-number">04</span><div class="skill-icon"><img src="images/document.png?v=1" alt="문서"></div><h3 class="">문서 작성</h3><p class="">팀 프로젝트를 거치며 기본적인 PPT, Excel 작성 능력을 숙달했습니다.</p></article></div></section>
-    <section class="section" id="games"><div class="section-heading"><div><p class="eyebrow">PLAYED &amp; STUDIED</p><h2>게임 경험</h2></div></div><div class="game-grid"><article class="game-card"><div class="game-visual"><span class="game-number">01</span>⌁</div><div class="game-copy"><p>게임 장르 01</p><h3>게임 이름 01</h3><span>게임 내용 01</span></div></article><article class="game-card"><div class="game-visual light"><span class="game-number">02</span>◇</div><div class="game-copy"><p>게임 장르 02</p><h3>게임 이름 02</h3><span>게임 내용 02</span></div></article></div></section>
+    <section class="section" id="games" aria-labelledby="games-title">
+      <div class="section-heading"><div><p class="eyebrow">STEAM PLAYTIME</p><h2 id="games-title">게임 경험</h2></div></div>
+      <p class="steam-caption">누적 플레이 시간 순 · 2026.11.04 기준</p>
+      <div class="steam-playtime">
+        <button type="button" class="steam-toggle" aria-expanded="false" aria-controls="steam-games">전체 190개 보기</button>
+        <ol class="steam-games" id="steam-games" role="list" aria-label="Steam 게임과 누적 플레이 시간">
+          <li><span class="steam-rank" aria-hidden="true">01</span><strong>Terraria</strong><span class="steam-duration">2,194.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">02</span><strong>Monster Hunter: World</strong><span class="steam-duration">1,492시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">03</span><strong>Counter-Strike 2</strong><span class="steam-duration">1,469.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">04</span><strong>PUBG: BATTLEGROUNDS</strong><span class="steam-duration">1,059.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">05</span><strong>tModLoader</strong><span class="steam-duration">1,043.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">06</span><strong>Grand Theft Auto V 레거시</strong><span class="steam-duration">999.4시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">07</span><strong>The Binding of Isaac: Rebirth</strong><span class="steam-duration">884.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">08</span><strong>Limbus Company</strong><span class="steam-duration">881.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">09</span><strong>Borderlands 2</strong><span class="steam-duration">860.5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">10</span><strong>톰 클랜시의 레인보우식스 시즈</strong><span class="steam-duration">829.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">11</span><strong>Slay the Spire</strong><span class="steam-duration">754.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">12</span><strong>이터널 리턴</strong><span class="steam-duration">627.5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">13</span><strong>데스티니 가디언즈</strong><span class="steam-duration">518.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">14</span><strong>Shadowverse</strong><span class="steam-duration">253.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">15</span><strong>The Binding of Isaac</strong><span class="steam-duration">231.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">16</span><strong>Dying Light</strong><span class="steam-duration">172.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">17</span><strong>Left 4 Dead 2</strong><span class="steam-duration">168.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">18</span><strong>블루 아카이브</strong><span class="steam-duration">163.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">19</span><strong>Palworld / 팰월드</strong><span class="steam-duration">133.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">20</span><strong>불과 얼음의 춤 (A Dance of Fire and Ice)</strong><span class="steam-duration">119.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">21</span><strong>ELDEN RING</strong><span class="steam-duration">118.5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">22</span><strong>Assassin&#x27;s Creed Odyssey</strong><span class="steam-duration">112.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">23</span><strong>Dungreed</strong><span class="steam-duration">106.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">24</span><strong>Far Cry 4</strong><span class="steam-duration">79.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">25</span><strong>DJMAX RESPECT V</strong><span class="steam-duration">78.5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">26</span><strong>Starbound</strong><span class="steam-duration">77.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">27</span><strong>보더랜드 3</strong><span class="steam-duration">76.4시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">28</span><strong>MONSTER HUNTER RISE</strong><span class="steam-duration">76.4시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">29</span><strong>Core Keeper</strong><span class="steam-duration">72.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">30</span><strong>Muse Dash</strong><span class="steam-duration">69.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">31</span><strong>Slay the Spire 2</strong><span class="steam-duration">68.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">32</span><strong>Back 4 Blood</strong><span class="steam-duration">66.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">33</span><strong>The Elder Scrolls V: Skyrim</strong><span class="steam-duration">63.5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">34</span><strong>Gunfire Reborn</strong><span class="steam-duration">62.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">35</span><strong>Don&#x27;t Starve Together</strong><span class="steam-duration">55.5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">36</span><strong>하츠네 미쿠 Project DIVA MEGA39’s+</strong><span class="steam-duration">52.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">37</span><strong>Rust</strong><span class="steam-duration">49.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">38</span><strong>Garry&#x27;s Mod</strong><span class="steam-duration">45.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">39</span><strong>Cyberpunk 2077</strong><span class="steam-duration">43.5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">40</span><strong>Puyo Puyo™Tetris®</strong><span class="steam-duration">41.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">41</span><strong>Monster Hunter Wilds</strong><span class="steam-duration">35.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">42</span><strong>Rise of the Tomb Raider</strong><span class="steam-duration">32.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">43</span><strong>Crypt of the NecroDancer</strong><span class="steam-duration">27.5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">44</span><strong>산나비</strong><span class="steam-duration">26.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">45</span><strong>Undertale</strong><span class="steam-duration">25.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">46</span><strong>Paladins</strong><span class="steam-duration">25.4시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">47</span><strong>Cave Story+</strong><span class="steam-duration">25.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">48</span><strong>서브노티카</strong><span class="steam-duration">21.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">49</span><strong>Raft</strong><span class="steam-duration">21.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">50</span><strong>Far Cry Primal</strong><span class="steam-duration">19.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">51</span><strong>Geometry Dash</strong><span class="steam-duration">19.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">52</span><strong>Grand Theft Auto: San Andreas</strong><span class="steam-duration">19.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">53</span><strong>Far Cry 5</strong><span class="steam-duration">19.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">54</span><strong>7 Days to Die</strong><span class="steam-duration">18.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">55</span><strong>ONE PIECE PIRATE WARRIORS 3</strong><span class="steam-duration">18.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">56</span><strong>Dead by Daylight</strong><span class="steam-duration">16.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">57</span><strong>Castle Crashers</strong><span class="steam-duration">16.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">58</span><strong>Super Hexagon</strong><span class="steam-duration">14.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">59</span><strong>Delta Force</strong><span class="steam-duration">14.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">60</span><strong>세피리아</strong><span class="steam-duration">14.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">61</span><strong>Baba Is You</strong><span class="steam-duration">14.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">62</span><strong>Skullgirls 2nd Encore</strong><span class="steam-duration">14.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">63</span><strong>Hammerwatch</strong><span class="steam-duration">13.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">64</span><strong>Lethal Company</strong><span class="steam-duration">12.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">65</span><strong>태고의 달인 쿵딱 ! 원더풀 페스티벌</strong><span class="steam-duration">12.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">66</span><strong>Red Dead Redemption 2</strong><span class="steam-duration">12시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">67</span><strong>VVVVVV</strong><span class="steam-duration">11.4시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">68</span><strong>산 먹는 드워프</strong><span class="steam-duration">10.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">69</span><strong>PLATiNA :: LAB</strong><span class="steam-duration">10.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">70</span><strong>Sid Meier&#x27;s Civilization V</strong><span class="steam-duration">10.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">71</span><strong>Wallpaper Engine</strong><span class="steam-duration">10.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">72</span><strong>Killing Floor 2</strong><span class="steam-duration">10.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">73</span><strong>Among Us</strong><span class="steam-duration">10.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">74</span><strong>Battlefield™ V</strong><span class="steam-duration">9.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">75</span><strong>Tomb Raider</strong><span class="steam-duration">8.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">76</span><strong>Old School Musical</strong><span class="steam-duration">8.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">77</span><strong>Company of Heroes 2</strong><span class="steam-duration">8.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">78</span><strong>Human Fall Flat</strong><span class="steam-duration">8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">79</span><strong>Realm Royale Reforged</strong><span class="steam-duration">7.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">80</span><strong>Borderlands: The Pre-Sequel</strong><span class="steam-duration">7.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">81</span><strong>Super Meat Boy</strong><span class="steam-duration">7.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">82</span><strong>Strinova</strong><span class="steam-duration">7.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">83</span><strong>SUPERHOT</strong><span class="steam-duration">6.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">84</span><strong>Sniper Elite V2</strong><span class="steam-duration">6.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">85</span><strong>Dota 2</strong><span class="steam-duration">5.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">86</span><strong>Marvel’s Spider-Man Remastered</strong><span class="steam-duration">5.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">87</span><strong>Enter the Gungeon</strong><span class="steam-duration">5.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">88</span><strong>ARK: Survival Evolved</strong><span class="steam-duration">5.5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">89</span><strong>Hero Siege</strong><span class="steam-duration">5.4시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">90</span><strong>Time Clickers</strong><span class="steam-duration">5.4시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">91</span><strong>PAYDAY 2</strong><span class="steam-duration">5.4시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">92</span><strong>PAYDAY: The Heist</strong><span class="steam-duration">5.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">93</span><strong>Doki Doki Literature Club</strong><span class="steam-duration">5.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">94</span><strong>Apex 레전드 ™</strong><span class="steam-duration">5.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">95</span><strong>Totally Accurate Battlegrounds</strong><span class="steam-duration">5.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">96</span><strong>Soundodger+</strong><span class="steam-duration">5.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">97</span><strong>Hollow Knight</strong><span class="steam-duration">5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">98</span><strong>Tabletop Simulator</strong><span class="steam-duration">5시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">99</span><strong>Minimum</strong><span class="steam-duration">4.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">100</span><strong>Battlefield™ 2042</strong><span class="steam-duration">4.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">101</span><strong>Timberman</strong><span class="steam-duration">4.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">102</span><strong>Warframe</strong><span class="steam-duration">4.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">103</span><strong>Spore</strong><span class="steam-duration">4.4시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">104</span><strong>LOCKDOWN Protocol</strong><span class="steam-duration">4.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">105</span><strong>Dungeon of the ENDLESS™</strong><span class="steam-duration">4.2시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">106</span><strong>Battlerite</strong><span class="steam-duration">3.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">107</span><strong>Don&#x27;t Starve</strong><span class="steam-duration">3.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">108</span><strong>Shadow of the Tomb Raider</strong><span class="steam-duration">3.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">109</span><strong>Phasmophobia</strong><span class="steam-duration">3.6시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">110</span><strong>보더랜드 ® 4</strong><span class="steam-duration">3.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">111</span><strong>64.0</strong><span class="steam-duration">3.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">112</span><strong>PEAK</strong><span class="steam-duration">3.1시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">113</span><strong>식스타 게이트 : 스타트레일</strong><span class="steam-duration">3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">114</span><strong>크로노 아크</strong><span class="steam-duration">3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">115</span><strong>Unturned</strong><span class="steam-duration">2.9시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">116</span><strong>METAL SLUG 3</strong><span class="steam-duration">2.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">117</span><strong>Zombie Army Trilogy</strong><span class="steam-duration">2.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">118</span><strong>Black Squad</strong><span class="steam-duration">2.8시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">119</span><strong>Tom Clancy&#x27;s Ghost Recon Phantoms - NA</strong><span class="steam-duration">2.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">120</span><strong>DayZ</strong><span class="steam-duration">2.7시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">121</span><strong>Getting Over It with Bennett Foddy</strong><span class="steam-duration">2.4시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">122</span><strong>hololive Dreams</strong><span class="steam-duration">2.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">123</span><strong>TAPSONIC BOLD</strong><span class="steam-duration">2.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">124</span><strong>Supermarket Together</strong><span class="steam-duration">2.3시간</span></li>
+          <li><span class="steam-rank" aria-hidden="true">125</span><strong>Ring of Elysium</strong><span class="steam-duration">118분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">126</span><strong>A Story About My Uncle</strong><span class="steam-duration">118분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">127</span><strong>리듬 닥터 (Rhythm Doctor)</strong><span class="steam-duration">117분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">128</span><strong>Archeblade</strong><span class="steam-duration">116분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">129</span><strong>칼파 : 코스믹 심포니 (KALPA: Cosmic Symphony)</strong><span class="steam-duration">112분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">130</span><strong>Cry of Fear</strong><span class="steam-duration">108분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">131</span><strong>No More Room in Hell</strong><span class="steam-duration">103분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">132</span><strong>Monster Hunter Wilds Beta test</strong><span class="steam-duration">96분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">133</span><strong>Brotato</strong><span class="steam-duration">95분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">134</span><strong>In Falsus</strong><span class="steam-duration">91분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">135</span><strong>포 아너</strong><span class="steam-duration">86분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">136</span><strong>The Forest</strong><span class="steam-duration">86분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">137</span><strong>For The King</strong><span class="steam-duration">79분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">138</span><strong>데이브 더 다이버</strong><span class="steam-duration">77분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">139</span><strong>Angvik</strong><span class="steam-duration">77분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">140</span><strong>Trove</strong><span class="steam-duration">67분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">141</span><strong>Machine Party</strong><span class="steam-duration">66분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">142</span><strong>Silly Linguine Cat Simulator Deluxe Online</strong><span class="steam-duration">41분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">143</span><strong>Insurgency</strong><span class="steam-duration">36분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">144</span><strong>농부는 대체되었다</strong><span class="steam-duration">31분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">145</span><strong>Hand Simulator</strong><span class="steam-duration">28분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">146</span><strong>Relic Hunters Zero: Remix</strong><span class="steam-duration">28분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">147</span><strong>Counter-Strike:Global Offensive</strong><span class="steam-duration">27분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">148</span><strong>Hades</strong><span class="steam-duration">25분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">149</span><strong>METAL SLUG</strong><span class="steam-duration">22분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">150</span><strong>DARK SOULS™ III</strong><span class="steam-duration">21분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">151</span><strong>Stardew Valley</strong><span class="steam-duration">21분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">152</span><strong>Tom Clancy&#x27;s Rainbow Six Siege - Test Server</strong><span class="steam-duration">21분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">153</span><strong>Five Nights at Freddy&#x27;s</strong><span class="steam-duration">18분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">154</span><strong>Five Nights at Freddy&#x27;s 2</strong><span class="steam-duration">14분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">155</span><strong>뿌요뿌요 ™ 테트리스 ® 2  </strong><span class="steam-duration">13분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">156</span><strong>Symphony</strong><span class="steam-duration">13분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">157</span><strong>Revolution Idle</strong><span class="steam-duration">9분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">158</span><strong>Galcon 2</strong><span class="steam-duration">8분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">159</span><strong>Tales Runner</strong><span class="steam-duration">5분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">160</span><strong>Yume Nikki</strong><span class="steam-duration">5분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">161</span><strong>APB Reloaded</strong><span class="steam-duration">3분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">162</span><strong>Clicker Heroes</strong><span class="steam-duration">3분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">163</span><strong>Hi-Fi RUSH</strong><span class="steam-duration">2분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">164</span><strong>oO</strong><span class="steam-duration">2분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">165</span><strong>Downfall - A Slay the Spire Fan Expansion</strong><span class="steam-duration">1분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">166</span><strong>Skyrim Script Extender (SKSE)</strong><span class="steam-duration">1분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">167</span><strong>Starbound - Unstable</strong><span class="steam-duration">1분</span></li>
+          <li><span class="steam-rank" aria-hidden="true">168</span><strong>911 Operator</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">169</span><strong>ARK: Survival Of The Fittest</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">170</span><strong>Brawlhalla</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">171</span><strong>Company of Heroes</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">172</span><strong>Company of Heroes - Legacy Edition</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">173</span><strong>Company of Heroes: Opposing Fronts</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">174</span><strong>Company of Heroes: Tales of Valor</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">175</span><strong>The Deed</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">176</span><strong>For Honor - Public Test</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">177</span><strong>Grand Theft Auto V 인핸스드</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">178</span><strong>LIMBO</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">179</span><strong>METAL SLUG X</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">180</span><strong>Oxygen Not Included</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">181</span><strong>Paladins - Public Test</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">182</span><strong>죠죠의 기묘한 모험 올 스타 배틀 R</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">183</span><strong>Realm Royale - Test Server</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">184</span><strong>Rust - Staging Branch</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">185</span><strong>Skullgirls ∞Endless Beta∞</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">186</span><strong>Snake Eyes Dungeon</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">187</span><strong>The Stanley Parable</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">188</span><strong>SUPERHOT: MIND CONTROL DELETE</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">189</span><strong>Warhammer 40,000: Gladius - Relics of War</strong><span class="steam-duration">표시 없음</span></li>
+          <li><span class="steam-rank" aria-hidden="true">190</span><strong>The Witcher 3: Wild Hunt — Remastered</strong><span class="steam-duration">표시 없음</span></li>
+        </ol>
+      </div>
+    </section>
   </main>
   <footer id="contact" class=""><div><p class="eyebrow">THANK YOU</p><h2>좋은 게임을 만드는 일에<br>꾸준히 기여하겠습니다.</h2></div><div class="footer-meta"><p>Contact · 이기현</p><div class="contact-item"><img class="contact-icon" src="images/gmail-icon.png" alt="Gmail"><span>rlgus845@gmail.com</span></div><div class="contact-item"><img class="contact-icon" src="images/phone-icon.png" alt="전화"><span class="footer-phone">010 - 3762 - 6979</span></div><small>LEE KIHYEON</small></div></footer>
   <script>
@@ -121,6 +347,24 @@
       window.setTimeout(()=>{projectWheelLocked=false},420);
     },{passive:false});
     showProject(0);
+
+    document.addEventListener('click', (event) => {
+      const toggle = event.target.closest('.steam-toggle');
+      if (!toggle) return;
+
+      const list = document.getElementById(toggle.getAttribute('aria-controls'));
+      const expanded = toggle.getAttribute('aria-expanded') === 'false';
+      toggle.setAttribute('aria-expanded', String(expanded));
+      toggle.textContent = expanded ? '목록 접기' : '전체 190개 보기';
+
+      if (expanded) {
+        list.tabIndex = 0;
+        list.focus({preventScroll: true});
+      } else {
+        list.scrollTop = 0;
+        list.removeAttribute('tabindex');
+      }
+    });
   </script>
   <script src="editor.js"></script>
 
